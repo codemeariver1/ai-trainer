@@ -10,7 +10,7 @@ capture = cv2.VideoCapture(0)
 detector = pm.PoseDetector()
 
 arm_rep = 0
-arm_dir = 0 # 0:open, 1:close
+arm_dir = 0  # 0:open, 1:close
 prev_time = 0
 
 while True:
@@ -26,7 +26,7 @@ while True:
 
     # Get the landmark values
     landmark_list = detector.findPosition(img, False)
-    #print(landmark_list)
+    # print(landmark_list)
     if len(landmark_list) != 0:
         # Left arm, distal direction
         arm_angle = detector.findAngle(img, 11, 13, 15)
@@ -54,7 +54,7 @@ while True:
             if arm_dir == 1:
                 arm_rep += 0.5
                 arm_dir = 0
-        #print(arm_rep)
+        # print(arm_rep)
 
         # Draw bar
         cv2.rectangle(img, (1100, 100), (1175, 650), color, 3)
